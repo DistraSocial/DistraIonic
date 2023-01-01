@@ -1,0 +1,7 @@
+{
+  "name": "Distra",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
