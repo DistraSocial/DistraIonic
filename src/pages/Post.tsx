@@ -11,7 +11,7 @@ interface ContainerProps {
   title: string;
 }
 
-const Profile: React.FC<ContainerProps> = ({ title }) => {
+const Post: React.FC<ContainerProps> = ({ title }) => {
   let history = useHistory();
   const goback = () => {
     history.goBack();
@@ -24,8 +24,8 @@ const Profile: React.FC<ContainerProps> = ({ title }) => {
       <IonContent fullscreen>
         <Box height={{ min: 'calc(100vh - 60px)' }} background={'background'} direction='row' className='content-container' style={{ marginTop: '60px' }}>
           <div className='content-window'>
-            <Box className='profile-background' background={'brand'} height="20vh" width='100%'>
-            <Box pad={{ vertical: 'small' }} justify='center' className='profile-options' direction='row'>
+            <Box className='' background={'brand'} width='100%'>
+            <Box pad={{ vertical: 'small' }} justify='center' direction='row'>
                 <Box width={{ max: '600px', width: '100%' }} direction="row" align='center' justify='between'>
                   <Box direction='row' pad={'small'} width={{ min: "100px" }}>
                     <Button onClick={() => {goback()}} primary color={'brand-light'}>
@@ -37,54 +37,19 @@ const Profile: React.FC<ContainerProps> = ({ title }) => {
                    
                   </Box>
                   <Box pad={{right: 'medium'}} direction='row' justify='evenly' align='end'>
-                   <Text weight={'bold'} color={'brand-light'}>Profile</Text>
+                    <Text weight={'bold'} color={'brand-light'}>Post</Text>
                   </Box>
                 </Box>
               </Box>
-              <Box pad={{ vertical: 'small' }} background='brand-light' justify='center' className='profile-info' direction='row'>
-                <Box width={{ max: '600px', width: '100%' }} direction="row" justify='between'>
-                  <Box direction='row' pad={'small'} width={{ min: "100px" }}>
-
-                    <div style={{ width: '40px', height: '40px', background: 'lightgrey', borderRadius: 10 }}></div>
-                    <Box justify='center' pad={{ left: 'small' }}>
-                      <Text truncate weight={'bold'} size={"medium"}>Allison Frederick</Text>
-                      <Text truncate color={'text-light'} size={"xsmall"}>lmontera@offsite.net</Text>
-                    </Box>
-                  </Box>
-                  <Box direction='row' justify='evenly' align='end'>
-                    <Button hoverIndicator>
-                      <Box border={'right'} pad={{ vertical: 'small', horizontal: 'medium' }} justify='center' align='center'>
-                        <Text size='medium' weight={'bolder'} >202</Text>
-                        <Text size='xsmall'>Followers</Text>
-                      </Box>
-                    </Button>
-                    <Button hoverIndicator>
-                      <Box pad={{ vertical: 'small', horizontal: 'medium' }} justify='center' align='center'>
-                        <Text size='medium' weight={'bolder'} >134</Text>
-                        <Text size='xsmall'>Following</Text>
-                      </Box>
-                    </Button>
-                  </Box>
-                </Box>
-              </Box>
+              
             </Box>
 
             <Box width={{ max: '600px', width: '100%' }} direction="column">
-              <Box margin={{ top: 'small',bottom: 'small' }} gap='small' pad={{ horizontal: 'small', vertical: 'small' }} direction='column' width={'100%'} justify='center' align='start'>
-                <Text size='small'>💻 Software Developer in ATL | Opinions are my own and not the views of my employer</Text>
-              </Box>
-              <Box align="center" width={{ width: '100%' }} pad={{ top: 'medium', bottom: 'small' }}>
-                <Tabs style={{ width: '100%' }} justify="center">
-                  <Tab color='brand' style={{ width: '33%', textAlign: 'center' }} title="Posts">
-                  </Tab>
-                  <Tab style={{ width: '33%', textAlign: 'center' }} title="Replies">
-                  </Tab>
-                  <Tab style={{ width: '33%', textAlign: 'center' }} title="Media">
-                  </Tab>
-                </Tabs>
-              </Box>
-              <Box gap='medium' width={{ width: '100%' }} direction='column' round>
+              <Box pad={{top: 'small'}} gap='medium' width={{ width: '100%' }} direction='column' round>
                 <PostCard />
+                <Box pad={'small'}>
+                  <Text weight={'bold'} size='large'>Replies</Text>
+                </Box>
                 <PostCard />
                 <PostCard />
                 <PostCard />
@@ -170,4 +135,4 @@ const Profile: React.FC<ContainerProps> = ({ title }) => {
 
 
 
-export default Profile;
+export default Post;

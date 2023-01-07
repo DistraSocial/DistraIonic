@@ -34,6 +34,9 @@
   animation: sidebar-slidein .3s forwards;
 }
 @media screen and (min-width: 720px) {
+  .navbar-menu-button {
+    display: none !important;
+  }
   .sidebar-bg-active {
     display: none;
   }

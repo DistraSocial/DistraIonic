@@ -10,7 +10,7 @@ import {
 import { useState } from 'react';
 import { useHistory } from "react-router-dom";
 
-const Navigation = (props:any) => {
+const Navigation = (props: any) => {
   const [menuState, setMenuState] = useState(true)
   const [themeToggleState, setThemeToggle] = useState(false)
 
@@ -54,9 +54,20 @@ const Navigation = (props:any) => {
             responsive={false}
             width={{ min: '100%' }}
             pad={{ left: 'none', right: 'none', vertical: 'none' }}
-            footer={<SidebarFooter handleThemeToggle={handleThemeToggle} themeToggleState={themeToggleState}/>}
+            footer={<SidebarFooter handleThemeToggle={handleThemeToggle} themeToggleState={themeToggleState} />}
             background="background"
           >
+            <Button hoverIndicator onClick={() => { sidebarNavigate('/profile') }} className='top-button' >
+              <Box direction='row' pad={{vertical: 'medium', horizontal: 'small'}} width={{ min: "100px" }}>
+
+                <div style={{ width: '40px', height: '40px', background: 'lightgrey', borderRadius: 10 }}></div>
+                <Box justify='center' pad={{ left: 'small' }}>
+                  <Text weight={'bold'} size={"small"}>Allison Frederick</Text>
+                  <Text color={'text-light'} size={"xsmall"}>allison@distra.com</Text>
+                </Box>
+              </Box>
+            </Button>
+            <div style={{ width: '100%', backgroundColor: 'lightgrey', height: 1 }}></div>
             <SidebarButton onClick={() => sidebarNavigate('/')} icon={<Home />} label="Home" />
             <SidebarButton onClick={() => sidebarNavigate('/explore')} icon={<Search />} label="Explore" />
             <SidebarButton onClick={() => sidebarNavigate('/notifications')} icon={<Notification />} label="Notifications" />
@@ -90,9 +101,9 @@ const SidebarButton: React.FC<SidebarButtonProps> = ({ label, icon, ...rest }) =
     </Box>
   </Button>
 );
-const SidebarFooter = (props:any) => (
+const SidebarFooter = (props: any) => (
   <Footer align='start' direction='column' >
-    <Box pad={{left: 'medium'}} gap='small' direction='row' align="start">
+    <Box pad={{ left: 'medium' }} gap='small' direction='row' align="start">
       <CheckBox
         checked={props.themeToggleState}
         onChange={(event) => props.handleThemeToggle(event.target.checked)}

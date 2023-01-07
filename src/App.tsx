@@ -14,6 +14,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, square, toggle, triangle } from 'ionicons/icons';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
+import Post from './pages/Post';
 import Placeholder from './pages/Placeholder';
 import Navigation from './components/Navigation'
 import {
@@ -192,7 +193,7 @@ const App: React.FC = () => {
                 <Placeholder title="Settings" />
               </Route>
               <Route path="/post">
-                <Placeholder title="Post" />
+                <Post title="Post" />
               </Route>
               <Route path="/profile">
                 <Profile title="Profile" />
