@@ -13,6 +13,7 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, square, toggle, triangle } from 'ionicons/icons';
 import Home from './pages/Home';
+import Profile from './pages/Profile';
 import Placeholder from './pages/Placeholder';
 import Navigation from './components/Navigation'
 import {
@@ -194,7 +195,7 @@ const App: React.FC = () => {
                 <Placeholder title="Post" />
               </Route>
               <Route path="/profile">
-                <Placeholder title="Profile" />
+                <Profile title="Profile" />
               </Route>
             </IonRouterOutlet>
             <IonTabBar className='mobile-tabs' slot="bottom">
