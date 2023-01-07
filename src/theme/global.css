@@ -1,0 +1,42 @@
+.mobile-tabs {
+
+}
+
+@media screen and (min-width: 720px) {
+  .mobile-tabs {
+    display: none;
+    visibility: hidden;
+  }
+  .content-container {
+    width: 100%;
+    padding-left: 300px;
+  }
+}
+
+.content-container {
+  display: flex;
+  padding-right: 5px;
+}
+.content-window {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+.content-right {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+@media screen and (max-width: 1000px) {
+  .content-window {
+    width: 100%;
+  }
+  .content-right {
+    display: none;
+  }
+}
