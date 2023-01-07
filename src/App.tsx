@@ -11,13 +11,12 @@ import {
   IonPage
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
+import { ellipse, square, toggle, triangle } from 'ionicons/icons';
+import Home from './pages/Home';
+import Placeholder from './pages/Placeholder';
 import Navigation from './components/Navigation'
 import {
-  Home,
+  Home as HomeIcon,
   Search,
   Notification,
 } from 'grommet-icons';
@@ -42,31 +41,35 @@ import './theme/variables.css';
 import './theme/global.css'
 
 import { deepMerge } from "grommet/utils";
-import { Grommet, Header, Text, grommet, Nav, Button } from 'grommet';
-const theme = deepMerge(grommet, {
+import { Grommet, Header, Text, grommet, Nav, Box } from 'grommet';
+import { useState } from 'react';
+
+const light = deepMerge(grommet, {
   global: {
     colors: {
+      background: '#fcfcfc',
       brand: "#818cf8",
-      'brand-light': "#eef2ff",
+      'brand-light': "#e0e7ff",
+      'hover': '#818cf830',
       "text-light": "#94a3b8",
-      border: 'lightgray'
+      border: 'text-light'
     },
     font: {
       family: "Roboto",
       size: "14px",
       height: "20px",
     },
+    hover: {
+      background: 'hover'
+    }
   },
- 
   card: {
     container: {
       border: {
         side: 'bottom'
+
       }
     },
-    footer: {
-      
-    }
   },
   tab: {
     color: 'text-strong',
@@ -90,7 +93,66 @@ const theme = deepMerge(grommet, {
       color: 'text-weak',
     },
     hover: {
-      background: 'background-contrast',
+      background: 'hover',
+      color: 'text',
+    },
+    pad: 'small',
+    margin: {
+      horizontal: 'none',
+    },
+  },
+});
+
+const dark = deepMerge(grommet, {
+  global: {
+    colors: {
+      background: '#16213E',
+      brand: "#818cf8",
+      'brand-light': "#312e81",
+      'hover': '#818cf830',
+      "text-light": "#94a3b8",
+      border: 'text-light'
+    },
+    font: {
+      family: "Roboto",
+      size: "14px",
+      height: "20px",
+    },
+    hover: {
+      background: 'hover'
+    }
+  },
+  card: {
+    container: {
+      border: {
+        side: 'bottom'
+
+      }
+    },
+  },
+  tab: {
+    color: 'text-strong',
+    active: {
+      color: 'brand',
+    },
+    border: {
+      side: 'bottom',
+      color: 'border',
+      active: {
+        color: 'brand',
+      },
+      disabled: {
+        color: 'border-weak',
+      },
+      hover: {
+        color: 'border',
+      },
+    },
+    disabled: {
+      color: 'text-weak',
+    },
+    hover: {
+      background: 'hover',
       color: 'text',
     },
     pad: 'small',
@@ -102,40 +164,54 @@ const theme = deepMerge(grommet, {
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <Grommet theme={theme} full>
-      <IonReactRouter>
-        <Navigation />
-        <IonTabs>
-          <IonRouterOutlet mode='md' >
-            <Route exact path="/tab1">
-              <Tab1 />
-            </Route>
-            <Route exact path="/tab2">
-              <Tab2 />
-            </Route>
-            <Route path="/tab3">
-              <Tab3 />
-            </Route>
-            <Route exact path="/">
-              <Redirect to="/tab1" />
-            </Route>
-          </IonRouterOutlet>
-          <IonTabBar className='mobile-tabs' slot="bottom">
-            <IonTabButton tab="tab1" href="/tab1">
-              <Home />
-            </IonTabButton>
-            <IonTabButton tab="tab2" href="/tab2">
-            <Search />
-            </IonTabButton>
-            <IonTabButton tab="tab3" href="/tab3">
-            <Notification />
-            </IonTabButton>
-          </IonTabBar>
-        </IonTabs>
-      </IonReactRouter>
-    </Grommet>
-  </IonApp>
-);
+const App: React.FC = () => {
+  const [appTheme, setAppTheme] = useState(light)
+  const toggleTheme = (value: boolean) => {
+    //wrote this way to handle a future with many themes
+    setAppTheme(value ? dark : light)
+  }
+
+  return (
+    <IonApp>
+      <Grommet theme={appTheme} full>
+        <IonReactRouter>
+          <Navigation toggleTheme={toggleTheme} />
+          <IonTabs>
+            <IonRouterOutlet mode='md' >
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/explore">
+                <Placeholder title="Explore" />
+              </Route>
+              <Route path="/notifications">
+                <Placeholder title="Notifications" />
+              </Route>
+              <Route path="/settings">
+                <Placeholder title="Settings" />
+              </Route>
+              <Route path="/post">
+                <Placeholder title="Post" />
+              </Route>
+              <Route path="/profile">
+                <Placeholder title="Profile" />
+              </Route>
+            </IonRouterOutlet>
+            <IonTabBar className='mobile-tabs' slot="bottom">
+              <IonTabButton tab="Home" href="/">
+                <HomeIcon color='brand' />
+              </IonTabButton>
+              <IonTabButton tab="Explore" href="/explore">
+                <Search color='brand' />
+              </IonTabButton>
+              <IonTabButton tab="Notifications" href="/notifications">
+                <Notification color='brand' />
+              </IonTabButton>
+            </IonTabBar>
+          </IonTabs>
+        </IonReactRouter>
+      </Grommet>
+    </IonApp>
+  )
+};
 export default App;

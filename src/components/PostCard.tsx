@@ -19,10 +19,10 @@ const ExploreContainer: React.FC = () => {
 
   return (
     <Card className='card' round="xsmall" width={{ min: '100%' }} elevation='none'>
-    <Box onClick={() => { sidebarNavigate('/post') }} tabIndex={0} className='card-button'></Box>
+    <Box hoverIndicator onClick={() => { sidebarNavigate('/post') }} tabIndex={0} className='card-button'></Box>
     <CardHeader className='' pad={{ horizontal: 'medium', top: 'small' }}>
       <Box width={{ min: '100%' }} direction='row' justify='between'>
-        <Button onClick={() => { sidebarNavigate('/profile') }} className='top-button' plain >
+        <Button hoverIndicator onClick={() => { sidebarNavigate('/profile') }} className='top-button' >
           <Box direction='row' width={{ min: "100px" }}>
 
             <div style={{ width: '40px', height: '40px', background: 'lightgrey', borderRadius: 10 }}></div>
@@ -32,32 +32,32 @@ const ExploreContainer: React.FC = () => {
             </Box>
           </Box>
         </Button>
-        <Button className='top-button' onClick={() => { sidebarNavigate('/options') }} icon={<More />}></Button>
+        <Button hoverIndicator className='top-button' onClick={() => { sidebarNavigate('/options') }} icon={<More />}></Button>
       </Box>
     </CardHeader>
     <CardBody gap='small' pad={{ horizontal: 'medium', vertical: 'small' }}>
-      <Text size='small'>It’s crazy that we are now closer to the year 2050 than we are to the year 2015</Text>
-      <Text color={'text-light'} size='xsmall'>3 Minutes Ago</Text>
+      <Text className='top-button' size='small'>It’s crazy that we are now closer to the year 2050 than we are to the year 2015</Text>
+      <Text className='top-button'  color={'text-light'} size='xsmall'>3 Minutes Ago</Text>
     </CardBody>
     <CardFooter justify='between' direction='row' pad={{ horizontal: 'medium', vertical: 'small' }}>
       <Box wrap direction='row' justify='start'>
         <Button style={{marginTop: 5, marginRight: 5}} plain className='top-button' onClick={() => { sidebarNavigate('/options') }}>
-          <Box background={'light-3'} round gap='small' justify='center' align='center' direction='row' pad={{horizontal: 'small', vertical: 'xsmall'}}><Text color={'brand'} size='small'>😂 234</Text></Box>
+          <Box background={'brand-light'} round gap='small' justify='center' align='center' direction='row' pad={{horizontal: 'small', vertical: 'xsmall'}}><Text color={'brand'} size='small'>😂 234</Text></Box>
         </Button>
         <Button style={{marginTop: 5, marginRight: 5}}  plain className='top-button' onClick={() => { sidebarNavigate('/options') }}>
-          <Box background={'light-3'} round  justify='center' align='center' direction='row' pad={{horizontal: 'small', vertical: 'xsmall'}}><Text color={'brand'} size='small'>🤨 32</Text></Box>
+          <Box background={'brand-light'} round  justify='center' align='center' direction='row' pad={{horizontal: 'small', vertical: 'xsmall'}}><Text color={'brand'} size='small'>🤨 32</Text></Box>
         </Button>
         <Button style={{marginTop: 5, marginRight: 5}}  plain className='top-button' onClick={() => { sidebarNavigate('/options') }}>
-          <Box background={'light-3'} round gap='small' justify='center' align='center' direction='row' pad={{horizontal: 'small', vertical: 'xsmall'}}><Text color={'brand'} size='small'>🫠 13</Text></Box>
+          <Box background={'brand-light'} round gap='small' justify='center' align='center' direction='row' pad={{horizontal: 'small', vertical: 'xsmall'}}><Text color={'brand'} size='small'>🫠 13</Text></Box>
         </Button>
         <Button style={{marginTop: 5, marginRight: 5}}  plain className='top-button' onClick={() => { sidebarNavigate('/options') }}>
-          <Box background={'light-3'} round gap='small' justify='center' align='center' direction='row' pad={{horizontal: 'small', vertical: 'xsmall'}}><Text color={'brand'} size='small'>🤮 5</Text></Box>
+          <Box background={'brand-light'} round gap='small' justify='center' align='center' direction='row' pad={{horizontal: 'small', vertical: 'xsmall'}}><Text color={'brand'} size='small'>🤮 5</Text></Box>
         </Button>
       </Box>
       <Box direction='row' justify='end' gap='medium'>
-        <Button size='small' plain className='top-button' onClick={() => { sidebarNavigate('/options') }} icon={<Bookmark/>}></Button>
-        <Button size='small' plain className='top-button' onClick={() => { sidebarNavigate('/options') }} icon={<Cycle />}></Button>
-        <Button size='small' plain className='top-button' onClick={() => { sidebarNavigate('/options') }} icon={<Chat />}></Button>
+        <Button hoverIndicator size='small' className='top-button' onClick={() => { sidebarNavigate('/options') }} icon={<Bookmark/>}></Button>
+        <Button hoverIndicator size='small' className='top-button' onClick={() => { sidebarNavigate('/options') }} icon={<Cycle />}></Button>
+        <Button hoverIndicator size='small' className='top-button' onClick={() => { sidebarNavigate('/options') }} icon={<Chat />}></Button>
       </Box>
     </CardFooter>
   </Card>

@@ -7,18 +7,12 @@
   height: 100%;
   width: 100%;
 }
-.card-button:hover {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background-color: #00000008;
-}
+
 .card-button:Focus {
   position: absolute;
   height: 100%;
   width: 100%;
   border: 1px solid black;
-  background-color: #00000010;
 }
 
 .card-button::after {
@@ -34,12 +28,7 @@
 .top-button {
   z-index: 5;
 }
-.top-button:hover {
-  background-color: #00000010;
 
-}
 @media screen and (max-width: 720px) {
-  .card-button:hover {
-    background-color: #00000000;
-  }
+ 
 }
