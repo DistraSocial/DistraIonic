@@ -1,11 +1,30 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonButton } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonButton, useIonViewWillEnter, useIonViewDidEnter } from '@ionic/react';
 import './Home.css';
 
 import { Box, Text, Button, Card, CardHeader, CardFooter, CardBody, Tabs, Tab } from 'grommet'
 
 import PostCard from '../components/PostCard'
+import generatePosts from '../tempTest/generatePosts';
+import { useEffect, useState } from 'react';
+
+//FIX FOR DOUBLE FIRING OF USEIONVIEWENTER, IF YOU KNOW OF A FIX...FEEL FREE
+let alreadyRan = false;
 
 const Home: React.FC = () => {
+  const [posts, setPosts] = useState([])
+
+  useIonViewDidEnter(() => {
+      if (alreadyRan != true) {
+        generatePosts(10)
+          .then((posts: any) => {
+            setPosts(posts)
+          })
+          alreadyRan = true
+      }
+      
+  });
+
+
 
   return (
     <IonPage>
@@ -23,34 +42,11 @@ const Home: React.FC = () => {
                 </Tabs>
               </Box>
               <Box gap='medium' width={{ width: '100%' }} direction='column' round>
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
+                {posts.map((post: any) => {
+                  return (
+                    <PostCard key={post.mediaText} post={post} />
+                  )
+                })}
               </Box>
             </Box>
 

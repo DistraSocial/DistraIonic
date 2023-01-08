@@ -22,7 +22,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 5px;
 }
 .content-right {
   width: 30%;

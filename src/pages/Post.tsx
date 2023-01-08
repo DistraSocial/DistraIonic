@@ -6,7 +6,7 @@ import {
   FormPrevious
 } from 'grommet-icons';
 import { useHistory } from "react-router-dom";
-
+import { examplePost } from '../tempTest/generatePosts';
 interface ContainerProps {
   title: string;
 }
@@ -46,37 +46,23 @@ const Post: React.FC<ContainerProps> = ({ title }) => {
 
             <Box width={{ max: '600px', width: '100%' }} direction="column">
               <Box pad={{top: 'small'}} gap='medium' width={{ width: '100%' }} direction='column' round>
-                <PostCard />
+                <PostCard post={examplePost}/>
                 <Box pad={'small'}>
                   <Text weight={'bold'} size='large'>Replies</Text>
                 </Box>
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
+                <PostCard post={examplePost}/>
+                <PostCard post={examplePost}/>
+                <PostCard post={examplePost}/>
+                <PostCard post={examplePost}/>
+                <PostCard post={examplePost}/>
+                <PostCard post={examplePost}/>
+                <PostCard post={examplePost}/>
+                <PostCard post={examplePost}/>
+                <PostCard post={examplePost}/>
+                <PostCard post={examplePost}/>
+                <PostCard post={examplePost}/>
+                <PostCard post={examplePost}/>
+
               </Box>
             </Box>
 

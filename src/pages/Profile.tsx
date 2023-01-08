@@ -6,7 +6,7 @@ import {
   FormPrevious
 } from 'grommet-icons';
 import { useHistory } from "react-router-dom";
-
+import { examplePost } from '../tempTest/generatePosts';
 interface ContainerProps {
   title: string;
 }
@@ -25,19 +25,19 @@ const Profile: React.FC<ContainerProps> = ({ title }) => {
         <Box height={{ min: 'calc(100vh - 60px)' }} background={'background'} direction='row' className='content-container' style={{ marginTop: '60px' }}>
           <div className='content-window'>
             <Box className='profile-background' background={'brand'} height="20vh" width='100%'>
-            <Box pad={{ vertical: 'small' }} justify='center' className='profile-options' direction='row'>
+              <Box pad={{ vertical: 'small' }} justify='center' className='profile-options' direction='row'>
                 <Box width={{ max: '600px', width: '100%' }} direction="row" align='center' justify='between'>
                   <Box direction='row' pad={'small'} width={{ min: "100px" }}>
-                    <Button onClick={() => {goback()}} primary color={'brand-light'}>
-                      <Box direction='row' align='center' justify='evenly' pad={{right: 'medium'}}>
-                        <FormPrevious size='30px' color='brand'/>
+                    <Button onClick={() => { goback() }} primary color={'brand-light'}>
+                      <Box direction='row' align='center' justify='evenly' pad={{ right: 'medium' }}>
+                        <FormPrevious size='30px' color='brand' />
                         <Text weight={'bold'} color='brand' size='small'>Back</Text>
                       </Box>
                     </Button>
-                   
+
                   </Box>
-                  <Box pad={{right: 'medium'}} direction='row' justify='evenly' align='end'>
-                   <Text weight={'bold'} color={'brand-light'}>Profile</Text>
+                  <Box pad={{ right: 'medium' }} direction='row' justify='evenly' align='end'>
+                    <Text weight={'bold'} color={'brand-light'}>Profile</Text>
                   </Box>
                 </Box>
               </Box>
@@ -70,7 +70,7 @@ const Profile: React.FC<ContainerProps> = ({ title }) => {
             </Box>
 
             <Box width={{ max: '600px', width: '100%' }} direction="column">
-              <Box margin={{ top: 'small',bottom: 'small' }} gap='small' pad={{ horizontal: 'small', vertical: 'small' }} direction='column' width={'100%'} justify='center' align='start'>
+              <Box margin={{ top: 'small', bottom: 'small' }} gap='small' pad={{ horizontal: 'small', vertical: 'small' }} direction='column' width={'100%'} justify='center' align='start'>
                 <Text size='small'>💻 Software Developer in ATL | Opinions are my own and not the views of my employer</Text>
               </Box>
               <Box align="center" width={{ width: '100%' }} pad={{ top: 'medium', bottom: 'small' }}>
@@ -84,34 +84,19 @@ const Profile: React.FC<ContainerProps> = ({ title }) => {
                 </Tabs>
               </Box>
               <Box gap='medium' width={{ width: '100%' }} direction='column' round>
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
+                <PostCard post={examplePost} />
+                <PostCard post={examplePost} />
+                <PostCard post={examplePost} />
+                <PostCard post={examplePost} />
+                <PostCard post={examplePost} />
+                <PostCard post={examplePost} />
+                <PostCard post={examplePost} />
+                <PostCard post={examplePost} />
+                <PostCard post={examplePost} />
+                <PostCard post={examplePost} />
+                <PostCard post={examplePost} />
+                <PostCard post={examplePost} />
+                <PostCard post={examplePost} />
               </Box>
             </Box>
 
