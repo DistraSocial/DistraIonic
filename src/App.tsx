@@ -52,6 +52,7 @@ const light = deepMerge(grommet, {
       background: '#fcfcfc',
       brand: "#818cf8",
       'brand-light': "#e0e7ff",
+      'brand-light-transparent': "#818cf880",
       'hover': '#818cf830',
       "text-light": "#94a3b8",
       border: 'text-light'
@@ -111,6 +112,7 @@ const dark = deepMerge(grommet, {
       background: '#16213E',
       brand: "#818cf8",
       'brand-light': "#312e81",
+      'brand-light-transparent': "#16213E80",
       'hover': '#818cf830',
       "text-light": "#94a3b8",
       border: 'text-light'
@@ -195,7 +197,7 @@ const App: React.FC = () => {
               <Route path="/post">
                 <Post title="Post" />
               </Route>
-              <Route path="/profile">
+              <Route path="/profile/:userAddress">
                 <Profile title="Profile" />
               </Route>
             </IonRouterOutlet>

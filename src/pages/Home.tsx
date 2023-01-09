@@ -1,10 +1,11 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonButton, useIonViewWillEnter, useIonViewDidEnter } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonButton, useIonViewWillEnter, useIonViewDidEnter, IonInfiniteScroll, IonInfiniteScrollContent } from '@ionic/react';
 import './Home.css';
 
 import { Box, Text, Button, Card, CardHeader, CardFooter, CardBody, Tabs, Tab } from 'grommet'
 
 import PostCard from '../components/PostCard'
-import generatePosts from '../tempTest/generatePosts';
+import { fetchFeed } from '../DistraJS';
+import { distraError } from '../types';
 import { useEffect, useState } from 'react';
 
 //FIX FOR DOUBLE FIRING OF USEIONVIEWENTER, IF YOU KNOW OF A FIX...FEEL FREE
@@ -12,17 +13,29 @@ let alreadyRan = false;
 
 const Home: React.FC = () => {
   const [posts, setPosts] = useState([])
+  const [fetchFailed, setFetchFailed] = useState(false)
 
-  useIonViewDidEnter(() => {
-      if (alreadyRan != true) {
-        generatePosts(10)
-          .then((posts: any) => {
-            setPosts(posts)
-          })
-          alreadyRan = true
-      }
-      
+
+  useIonViewWillEnter(() => {
+    if (alreadyRan != true) {
+      getPosts(0)
+      alreadyRan = true
+    }
+
   });
+
+  const getPosts = (startPos: number) => {
+    setFetchFailed(false)
+    fetchFeed(startPos)
+      .then((newPosts: any) => {
+        const updatedPostArray = posts.concat(newPosts)
+        setPosts(updatedPostArray)
+      })
+      .catch((error: distraError) => {
+        console.log(error)
+        setFetchFailed(true)
+      })
+  }
 
 
 
@@ -44,9 +57,23 @@ const Home: React.FC = () => {
               <Box gap='medium' width={{ width: '100%' }} direction='column' round>
                 {posts.map((post: any) => {
                   return (
-                    <PostCard key={post.mediaText} post={post} />
+                    <PostCard border={'bottom'} key={post.postAddress} post={post} />
                   )
                 })}
+                <IonInfiniteScroll
+                  onIonInfinite={(ev) => {
+                    getPosts(posts.length);
+                  }}
+                >
+                  {fetchFailed ? 
+                  <Box pad={{vertical: 'large'}} align='center' justify='center' width={'100%'}>
+                    <Button onClick={() => {getPosts(posts.length)}} secondary color={'brand'}>Try Again</Button>
+                  </Box> 
+                  : 
+                  <IonInfiniteScrollContent/>}
+                  
+                </IonInfiniteScroll>
+
               </Box>
             </Box>
 

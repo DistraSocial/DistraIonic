@@ -32,3 +32,12 @@
 @media screen and (max-width: 720px) {
  
 }
+
+.post-profile-picture {
+  border-radius: 10px;
+  background-color: lightgray;
+  height: 45px;
+  width: 45px;
+  background-position: center;
+  background-size: cover;
+}

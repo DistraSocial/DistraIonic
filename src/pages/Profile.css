@@ -1,13 +1,43 @@
 .profile-background {
   position: relative;
+  left: 0;
+  right: 0;
+  background-color: lightgray;
+  background-position: center;
+  background-size: cover;
+
 }
+
 .profile-info {
   position: absolute;
   bottom: 0;
   width: 100%;
+  backdrop-filter: blur(12px);
+  color: white !important;
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3) !important;
 }
+
 .profile-options {
   position: absolute;
   top: 0;
   width: 100%;
+}
+
+.profile-picture {
+  border-radius: 10px;
+  background-color: lightgray;
+  position: absolute;
+  top: -50%;
+  height: 65px;
+  width: 65px;
+  background-position: center;
+  background-size: cover;
+  border: 1px solid white;
+}
+
+@media screen and (min-width: 720px) {
+  .profile-picture {
+    height: 85px;
+    width: 85px;
+  }
 }

@@ -1,12 +1,11 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonPage } from '@ionic/react';
 import './Profile.css'
-import { Box, Sidebar, Button, Text, Tab, Tabs } from 'grommet'
+import { Box, Button, Text, } from 'grommet'
 import PostCard from '../components/PostCard'
 import {
   FormPrevious
 } from 'grommet-icons';
 import { useHistory } from "react-router-dom";
-import { examplePost } from '../tempTest/generatePosts';
 interface ContainerProps {
   title: string;
 }
@@ -24,7 +23,7 @@ const Post: React.FC<ContainerProps> = ({ title }) => {
       <IonContent fullscreen>
         <Box height={{ min: 'calc(100vh - 60px)' }} background={'background'} direction='row' className='content-container' style={{ marginTop: '60px' }}>
           <div className='content-window'>
-            <Box className='' background={'brand'} width='100%'>
+            <Box className='' width='100%'>
             <Box pad={{ vertical: 'small' }} justify='center' direction='row'>
                 <Box width={{ max: '600px', width: '100%' }} direction="row" align='center' justify='between'>
                   <Box direction='row' pad={'small'} width={{ min: "100px" }}>
@@ -36,9 +35,6 @@ const Post: React.FC<ContainerProps> = ({ title }) => {
                     </Button>
                    
                   </Box>
-                  <Box pad={{right: 'medium'}} direction='row' justify='evenly' align='end'>
-                    <Text weight={'bold'} color={'brand-light'}>Post</Text>
-                  </Box>
                 </Box>
               </Box>
               
@@ -46,22 +42,17 @@ const Post: React.FC<ContainerProps> = ({ title }) => {
 
             <Box width={{ max: '600px', width: '100%' }} direction="column">
               <Box pad={{top: 'small'}} gap='medium' width={{ width: '100%' }} direction='column' round>
-                <PostCard post={examplePost}/>
+                <Box pad={'small'}>
+                  <Text truncate weight={'bolder'} size='large'>s Post</Text>
+                </Box>
+                
+                <Box background={'border'} height={'1px'} width={{min: '100%'}}>
+                </Box>
                 <Box pad={'small'}>
                   <Text weight={'bold'} size='large'>Replies</Text>
                 </Box>
-                <PostCard post={examplePost}/>
-                <PostCard post={examplePost}/>
-                <PostCard post={examplePost}/>
-                <PostCard post={examplePost}/>
-                <PostCard post={examplePost}/>
-                <PostCard post={examplePost}/>
-                <PostCard post={examplePost}/>
-                <PostCard post={examplePost}/>
-                <PostCard post={examplePost}/>
-                <PostCard post={examplePost}/>
-                <PostCard post={examplePost}/>
-                <PostCard post={examplePost}/>
+               
+
 
               </Box>
             </Box>

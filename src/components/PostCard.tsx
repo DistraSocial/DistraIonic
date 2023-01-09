@@ -18,14 +18,14 @@ const ExploreContainer = (props: any) => {
   }
 
   return (
-    <Card className='card' round="xsmall" width={{ min: '100%' }} elevation='none'>
+    <Card border={props.border} className='card' round="xsmall" width={{ min: '100%' }} elevation='none'>
       <Box hoverIndicator onClick={() => { sidebarNavigate('/post') }} tabIndex={0} className='card-button'></Box>
       <CardHeader className='' pad={{ horizontal: 'medium', top: 'small' }}>
         <Box width={{ min: '100%' }} direction='row' justify='between'>
-          <Button hoverIndicator onClick={() => { sidebarNavigate('/profile') }} className='top-button' >
+          <Button hoverIndicator onClick={() => { sidebarNavigate('/profile/' + props.post.userAddress) }} className='top-button' >
             <Box direction='row' width={{ min: "100px" }}>
 
-              <div style={{ width: '40px', height: '40px', background: 'lightgrey', borderRadius: 10 }}></div>
+              <div className='post-profile-picture' style={{backgroundImage: 'url(' + props.post.userPicture + ')'}}></div>
               <Box justify='center' pad={{ left: 'small' }}>
                 <Text weight={'bold'} size={"small"}>{props.post.userName}</Text>
                 <Text color={'text-light'} size={"xsmall"}>{props.post.userAddress}</Text>
@@ -42,13 +42,14 @@ const ExploreContainer = (props: any) => {
       <CardFooter justify='between' direction='row' pad={{ horizontal: 'medium', vertical: 'small' }}>
         <Box wrap direction='row' justify='start'>
 
-          {props.post.reactions.map((reaction:any) => {
+          {props.post.reactionsn ? props.post.reactions.map((reaction: any) => {
             return (
-              <Button key={reaction.count + Math.random()*100} style={{ marginTop: 5, marginRight: 5 }} plain className='top-button' onClick={() => { sidebarNavigate('/options') }}>
+              <Button key={reaction.count + Math.random() * 100} style={{ marginTop: 5, marginRight: 5 }} plain className='top-button' onClick={() => { sidebarNavigate('/options') }}>
                 <Box background={'brand-light'} round gap='small' justify='center' align='center' direction='row' pad={{ horizontal: 'small', vertical: 'xsmall' }}><Text color={'brand'} size='small'>{reaction.emoji} {reaction.count}</Text></Box>
               </Button>
             )
-          })}
+          }) : <></>}
+
         </Box>
         <Box direction='row' justify='end' gap='medium'>
           <Button hoverIndicator size='small' className='top-button' onClick={() => { sidebarNavigate('/options') }} icon={<Bookmark />}></Button>
