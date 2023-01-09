@@ -67,6 +67,7 @@ const Home: React.FC = () => {
                 >
                   {fetchFailed ? 
                   <Box pad={{vertical: 'large'}} align='center' justify='center' width={'100%'}>
+                    <Text margin={{bottom: 'small'}}>Failed to retrieve posts</Text>
                     <Button onClick={() => {getPosts(posts.length)}} secondary color={'brand'}>Try Again</Button>
                   </Box> 
                   : 

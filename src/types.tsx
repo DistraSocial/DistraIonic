@@ -15,8 +15,8 @@ export type Profile = {
   birthday: Date;
   createdAt: Date;
   updatedAt: Date;
-  following?: string[];
-  followers?: string[];
+  following?: ProfileRef[];
+  followers?: ProfileRef[];
   posts?: PostRef[];
 };
 
@@ -41,6 +41,7 @@ export type Post = {
 
 export type PostRef = {
   postAddress: string;
+  userAddress?: string;
 };
 
 export type Reaction = {

@@ -8,16 +8,23 @@ import {
   SettingsOption,
 } from 'grommet-icons';
 import { useState } from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 const Navigation = (props: any) => {
   const [menuState, setMenuState] = useState(true)
   const [themeToggleState, setThemeToggle] = useState(false)
-
+  //@ts-ignore
+  let {id} = useParams();
   let history = useHistory();
 
   const sidebarNavigate = (link: string) => {
-    history.replace(link)
+    console.log(window.location.toString)
+    if (id) {
+      history.replace(link)
+    }
+    else {
+      history.push(link)
+    }
     setMenuState(true)
 
   }

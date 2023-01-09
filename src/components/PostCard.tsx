@@ -20,7 +20,8 @@ const ExploreContainer = (props: any) => {
   return (
     <Card border={props.border} className='card' round="xsmall" width={{ min: '100%' }} elevation='none'>
       <Box hoverIndicator onClick={() => { sidebarNavigate('/post') }} tabIndex={0} className='card-button'></Box>
-      <CardHeader className='' pad={{ horizontal: 'medium', top: 'small' }}>
+      <Box direction='column' align='start' className='' pad={{ horizontal: 'medium', top: 'small' }}>
+      <Text margin={{bottom: 'small'}} color={'brand'} size={"xsmall"}>{props.post.replyTo ? 'Replying to ' + props.post.replyTo.userAddress : ''}</Text>
         <Box width={{ min: '100%' }} direction='row' justify='between'>
           <Button hoverIndicator onClick={() => { sidebarNavigate('/profile/' + props.post.userAddress) }} className='top-button' >
             <Box direction='row' width={{ min: "100px" }}>
@@ -34,7 +35,7 @@ const ExploreContainer = (props: any) => {
           </Button>
           <Button hoverIndicator className='top-button' onClick={() => { sidebarNavigate('/options') }} icon={<More />}></Button>
         </Box>
-      </CardHeader>
+      </Box>
       <CardBody gap='small' pad={{ horizontal: 'medium', vertical: 'small' }}>
         <Text className='top-button' size='small'>{props.post.mediaText}</Text>
         <Text className='top-button' color={'text-light'} size='xsmall'>{formatPostedTime(props.post.updatedAt)}</Text>

@@ -10,6 +10,9 @@ export const testProfiles:Profile[] = [
     createdAt: new Date(),
     updatedAt: new Date(),
     birthday: new Date('11/25/2000'),
+    followers: [
+      {userName: 'Andy 👋', userAddress: 'andydamico@distra.social'}
+    ],
     posts: [{
       postAddress: '1'
     }]
@@ -74,7 +77,8 @@ export const testPosts:Post[] = [
     createdAt: new Date(),
     updatedAt: new Date(),
     replyTo: {
-      postAddress: '1'
+      postAddress: '1',
+      userAddress: 'allison@distra.social'
     },
   },
   {
@@ -92,6 +96,15 @@ export const testPosts:Post[] = [
     userAddress: 'shay223@distra.social',
     userPicture: 'https://randomuser.me/api/portraits/women/89.jpg',
     mediaText: "example post",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    postAddress: '5',
+    userName: 'Andy 👋',
+    userAddress: 'andydamico@distra.social',
+    userPicture: 'https://randomuser.me/api/portraits/men/58.jpg',
+    mediaText: "This is not a reply",
     createdAt: new Date(),
     updatedAt: new Date(),
   },
