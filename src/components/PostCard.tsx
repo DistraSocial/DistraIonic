@@ -19,14 +19,14 @@ const ExploreContainer = (props: any) => {
 
   return (
     <Card border={props.border} className='card' round="xsmall" width={{ min: '100%' }} elevation='none'>
-      <Box hoverIndicator onClick={() => { sidebarNavigate('/post') }} tabIndex={0} className='card-button'></Box>
+      <Box hoverIndicator onClick={() => { sidebarNavigate('/post/' + props.post.postAddress) }} tabIndex={0} className='card-button'></Box>
       <Box direction='column' align='start' className='' pad={{ horizontal: 'medium', top: 'small' }}>
-      <Text margin={{bottom: 'small'}} color={'brand'} size={"xsmall"}>{props.post.replyTo ? 'Replying to ' + props.post.replyTo.userAddress : ''}</Text>
+        {props.post.replyTo ? <Box round pad={{horizontal: 'small', vertical: 'xsmall'}} margin={{bottom: 'small'}} align='center' justify='center' background={'brand-light'} direction='row'><Text color={'brand'} size={"xsmall"}>{props.post.replyTo ? 'Replying to ' + props.post.replyTo.userAddress : ''}</Text></Box> : <></>}
         <Box width={{ min: '100%' }} direction='row' justify='between'>
           <Button hoverIndicator onClick={() => { sidebarNavigate('/profile/' + props.post.userAddress) }} className='top-button' >
             <Box direction='row' width={{ min: "100px" }}>
 
-              <div className='post-profile-picture' style={{backgroundImage: 'url(' + props.post.userPicture + ')'}}></div>
+              <Box border className='post-profile-picture' style={{backgroundImage: 'url(' + props.post.userPicture + ')'}}></Box>
               <Box justify='center' pad={{ left: 'small' }}>
                 <Text weight={'bold'} size={"small"}>{props.post.userName}</Text>
                 <Text color={'text-light'} size={"xsmall"}>{props.post.userAddress}</Text>
@@ -43,7 +43,7 @@ const ExploreContainer = (props: any) => {
       <CardFooter justify='between' direction='row' pad={{ horizontal: 'medium', vertical: 'small' }}>
         <Box wrap direction='row' justify='start'>
 
-          {props.post.reactionsn ? props.post.reactions.map((reaction: any) => {
+          {props.post.reactions ? props.post.reactions.map((reaction: any) => {
             return (
               <Button key={reaction.count + Math.random() * 100} style={{ marginTop: 5, marginRight: 5 }} plain className='top-button' onClick={() => { sidebarNavigate('/options') }}>
                 <Box background={'brand-light'} round gap='small' justify='center' align='center' direction='row' pad={{ horizontal: 'small', vertical: 'xsmall' }}><Text color={'brand'} size='small'>{reaction.emoji} {reaction.count}</Text></Box>

@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 //FIX FOR DOUBLE FIRING OF USEIONVIEWENTER, IF YOU KNOW OF A FIX...FEEL FREE
 let alreadyRan = false;
 
-const Home: React.FC = () => {
+const Home = () => {
   const [posts, setPosts] = useState([])
   const [fetchFailed, setFetchFailed] = useState(false)
 
@@ -55,9 +55,9 @@ const Home: React.FC = () => {
                 </Tabs>
               </Box>
               <Box gap='medium' width={{ width: '100%' }} direction='column' round>
-                {posts.map((post: any) => {
+                {posts.map((post: any, index:number) => {
                   return (
-                    <PostCard border={'bottom'} key={post.postAddress} post={post} />
+                    <PostCard border={'bottom'} key={index} post={post} />
                   )
                 })}
                 <IonInfiniteScroll
@@ -65,14 +65,14 @@ const Home: React.FC = () => {
                     getPosts(posts.length);
                   }}
                 >
-                  {fetchFailed ? 
-                  <Box pad={{vertical: 'large'}} align='center' justify='center' width={'100%'}>
-                    <Text margin={{bottom: 'small'}}>Failed to retrieve posts</Text>
-                    <Button onClick={() => {getPosts(posts.length)}} secondary color={'brand'}>Try Again</Button>
-                  </Box> 
-                  : 
-                  <IonInfiniteScrollContent/>}
-                  
+                  {fetchFailed ?
+                    <Box pad={{ vertical: 'large' }} align='center' justify='center' width={'100%'}>
+                      <Text margin={{ bottom: 'small' }}>Failed to retrieve posts</Text>
+                      <Button onClick={() => { getPosts(posts.length) }} secondary color={'brand'}>Try Again</Button>
+                    </Box>
+                    :
+                    <IonInfiniteScrollContent />}
+
                 </IonInfiniteScroll>
 
               </Box>

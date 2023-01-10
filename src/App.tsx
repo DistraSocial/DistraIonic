@@ -168,8 +168,10 @@ const dark = deepMerge(grommet, {
 
 setupIonicReact();
 
+
 const App: React.FC = () => {
   const [appTheme, setAppTheme] = useState(light)
+
   const toggleTheme = (value: boolean) => {
     //wrote this way to handle a future with many themes
     setAppTheme(value ? dark : light)
@@ -181,7 +183,7 @@ const App: React.FC = () => {
         <IonReactRouter>
           <Navigation toggleTheme={toggleTheme} />
           <IonTabs>
-            <IonRouterOutlet mode='md' >
+            <IonRouterOutlet mode='ios' >
               <Route exact path="/">
                 <Home />
               </Route>
@@ -194,11 +196,17 @@ const App: React.FC = () => {
               <Route path="/settings">
                 <Placeholder title="Settings" />
               </Route>
-              <Route path="/post">
+              <Route path="/post/:id">
                 <Post title="Post" />
               </Route>
-              <Route path="/profile/:id">
-                <Profile title="Profile" />
+              <Route exact path="/post">
+                <Placeholder title="Post not found" />
+              </Route>
+              <Route  path="/profile/:id">
+                <Profile />
+              </Route>
+              <Route exact path="/profile">
+                <Placeholder title="Profile Not Found" />
               </Route>
             </IonRouterOutlet>
             <IonTabBar className='mobile-tabs' slot="bottom">

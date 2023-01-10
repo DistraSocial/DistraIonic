@@ -18,13 +18,7 @@ const Navigation = (props: any) => {
   let history = useHistory();
 
   const sidebarNavigate = (link: string) => {
-    console.log(window.location.toString)
-    if (id) {
-      history.replace(link)
-    }
-    else {
-      history.push(link)
-    }
+    history.push(link)
     setMenuState(true)
 
   }

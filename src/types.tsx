@@ -36,7 +36,9 @@ export type Post = {
   mediaText: string;
   tags?: string[];
   reactions?: Reaction[];
-  replies?: PostRef[];
+  repliesRef?: PostRef[];
+  replies?: Post[];
+  originalPost?: Post;
 };
 
 export type PostRef = {

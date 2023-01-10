@@ -5,7 +5,7 @@ export const fetchProfilePosts = (userAddress: string) => {
   console.log('SIMULATING fetchProfilePosts')
   return new Promise((resolve, reject) => {
     //Randomly throw a failure
-    const isFailure = (Math.random() * 5) > 4;
+    const isFailure = (Math.random() * 4) > 4;
     if (isFailure) { reject({userMessage: 'Failed to get posts', errorCode: '500', errorMessage: 'SimulatedError'}) }
     else {
 

@@ -24,7 +24,7 @@
   align-items: center;
 }
 .content-right {
-  width: 30%;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;

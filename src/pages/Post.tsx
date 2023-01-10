@@ -1,16 +1,22 @@
-import { IonContent, IonPage } from '@ionic/react';
+import { IonContent, IonPage, useIonViewWillEnter, useIonViewWillLeave } from '@ionic/react';
 import './Profile.css'
 import { Box, Button, Text, } from 'grommet'
 import PostCard from '../components/PostCard'
 import {
   FormPrevious
 } from 'grommet-icons';
-import { useHistory } from "react-router-dom";
-interface ContainerProps {
-  title: string;
-}
+import { useHistory, useParams } from "react-router-dom";
+import { useState } from 'react';
+import { distraError } from '../types';
+import { fetchPost } from '../DistraJS';
+import {Post as PostType} from '../types'
+let alreadyRan = false;
 
-const Post: React.FC<ContainerProps> = ({ title }) => {
+const Post = (props:any) => {
+  const [post, setPost] = useState<PostType>()
+  const [postReplies, setPostReplies] = useState<PostType[]>()
+  const [fetchFailed, setFetchFailed] = useState(false)
+
   let history = useHistory();
   const goback = () => {
     history.goBack();
@@ -18,6 +24,40 @@ const Post: React.FC<ContainerProps> = ({ title }) => {
   const navigate = (link: string) => {
     history.push(link)
   }
+
+    //@ts-ignore
+    let { id } = useParams();
+  
+  
+    useIonViewWillEnter(() => {
+      //TODO - UNSURE WHY THIS IS NEEDED
+      id = history.location.pathname.replace('/post/', '')
+      if (alreadyRan != true) {
+        getPost(id)
+        alreadyRan = true
+      }
+    });
+    useIonViewWillLeave(() => {
+      setPost(undefined)
+      alreadyRan = false
+      setPostReplies(undefined)
+
+    });
+
+  const getPost = (postAddress:string) => {
+    setFetchFailed(false)
+    setPostReplies(undefined)
+    fetchPost(id + '')
+      .then((fetchedPost: any) => {
+        setPost(fetchedPost)
+        setPostReplies(fetchedPost.replies)
+      })
+      .catch((error: distraError) => {
+        console.log(error)
+        setFetchFailed(true)
+      })
+  }
+
   return (
     <IonPage>
       <IonContent fullscreen>
@@ -43,15 +83,24 @@ const Post: React.FC<ContainerProps> = ({ title }) => {
             <Box width={{ max: '600px', width: '100%' }} direction="column">
               <Box pad={{top: 'small'}} gap='medium' width={{ width: '100%' }} direction='column' round>
                 <Box pad={'small'}>
-                  <Text truncate weight={'bolder'} size='large'>s Post</Text>
+                  <Text truncate weight={'bolder'} size='large'>{post?.originalPost?.userName ? post?.originalPost?.userName : post?.userName}'s Post</Text>
                 </Box>
+                {post?.originalPost?.postAddress ?  <PostCard border post={post.originalPost}/> : <></>}
+
+                {post ?  <PostCard post={post}/> : <></>}
+               
                 
                 <Box background={'border'} height={'1px'} width={{min: '100%'}}>
                 </Box>
                 <Box pad={'small'}>
                   <Text weight={'bold'} size='large'>Replies</Text>
                 </Box>
-               
+                {postReplies ? postReplies?.map((reply, index) => {
+                  return (
+                    <PostCard border="bottom" key={index} post={reply}/>
+                  )
+                }) : <></>}
+
 
 
               </Box>

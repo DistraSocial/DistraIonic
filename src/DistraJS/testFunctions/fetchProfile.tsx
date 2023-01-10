@@ -5,7 +5,7 @@ export const fetchProfile = (userAddress: string) => {
   console.log('SIMULATING fetchProfile')
   return new Promise((resolve, reject) => {
     //Randomly throw a failure
-    const isFailure = (Math.random() * 5) > 4;
+    const isFailure = (Math.random() * 4) > 4;
     if (isFailure) { reject({ userMessage: 'Failed to get profile', errorCode: '500', errorMessage: 'SimulatedError' }) }
     else {
       setTimeout(() => {
