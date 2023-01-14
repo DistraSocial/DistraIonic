@@ -15,6 +15,7 @@ import { ellipse, square, toggle, triangle } from 'ionicons/icons';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Post from './pages/Post';
+import Explore from './pages/Explore';
 import Placeholder from './pages/Placeholder';
 import Navigation from './components/Navigation'
 import {
@@ -53,7 +54,7 @@ const light = deepMerge(grommet, {
       brand: "#4338ca",
       'brand-light': "#e0e7ff",
       'brand-light-transparent': "#4338ca60",
-      'hover': '#4338ca30',
+      'hover': '#d9d7fe',
       "text-light": "#94a3b8",
       border: 'text-light'
     },
@@ -113,7 +114,7 @@ const dark = deepMerge(grommet, {
       brand: "#818cf8",
       'brand-light': "#312e81",
       'brand-light-transparent': "#16213E80",
-      'hover': '#818cf830',
+      'hover': '#818cf860',
       "text-light": "#94a3b8",
       border: 'text-light'
     },
@@ -188,7 +189,7 @@ const App: React.FC = () => {
                 <Home />
               </Route>
               <Route exact path="/explore">
-                <Placeholder title="Explore" />
+                <Explore/>
               </Route>
               <Route path="/notifications">
                 <Placeholder title="Notifications" />

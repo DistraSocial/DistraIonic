@@ -91,11 +91,11 @@ const Profile = (props: any) => {
               </Box>
               :
               <>
-                <Box className='profile-background' style={{ backgroundImage: 'url(' + (profile ? profile.userBackground : '') + ')' }} height="20vh" width='100%'>
+                <Box className='profile-background' style={{ backgroundImage: 'url(' + (profile ? profile.userBackground : '') + ')' }} height={{min: '200px'}} width='100%'>
                   <Box pad={{ vertical: 'small' }} justify='center' className='profile-options' direction='row'>
                     <Box width={{ max: '600px', width: '100%' }} direction="row" align='center' justify='between'>
                       <Box direction='row' pad={'small'} width={{ min: "100px" }}>
-                        <Button onClick={() => { goback() }} primary color={'brand-light'}>
+                        <Button hoverIndicator onClick={() => { goback() }} primary color={'brand-light'}>
                           <Box direction='row' align='center' justify='evenly' pad={{horizontal: 'small', vertical: 'xsmall'}}>
                             <LinkPrevious size='16px' color='brand' />
                             <Text margin={{horizontal: 'xsmall'}} weight={'bold'} color='brand' size='small'>Back</Text>
@@ -151,7 +151,7 @@ const Profile = (props: any) => {
                         <Text truncate color={'text-light'} size={"small"}>{profile ? profile.userAddress : <IonSkeletonText animated={true} style={{ 'width': '100px', 'height': '18px', borderRadius: '5px' }}></IonSkeletonText>}</Text>
                       </Box>
                       <Box height={"100%"} align='start' justify='start'>
-                        <Button style={{padding: '5px 25px'}} color="brand-light" primary>
+                        <Button hoverIndicator style={{padding: '5px 25px'}} color="brand-light" primary>
                           <Text weight={'bold'} color="brand" size='small' >Follow</Text>
                         </Button>
                       </Box>

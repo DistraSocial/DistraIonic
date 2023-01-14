@@ -38,7 +38,7 @@ export const fetchPost = (postAddress: string) => {
         }
 
 
-        if (!fullPost) {reject({ userMessage: 'Failed to get post', errorCode: '500', errorMessage: 'SimulatedError' })}
+        if (!fullPost) {reject({ userMessage: 'Failed to find post', errorCode: '404', errorMessage: 'SimulatedError' })}
         resolve(fullPost)
       }, 500)
     }

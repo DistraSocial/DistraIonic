@@ -1,7 +1,7 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonButton, useIonViewWillEnter, useIonViewDidEnter, IonInfiniteScroll, IonInfiniteScrollContent } from '@ionic/react';
 import './Home.css';
 
-import { Box, Text, Button, Card, CardHeader, CardFooter, CardBody, Tabs, Tab, Spinner } from 'grommet'
+import { Box, Text, Button, Card, CardHeader, CardFooter, CardBody, Tabs, Tab } from 'grommet'
 
 import PostCard from '../components/PostCard'
 import { fetchFeed } from '../DistraJS';
@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 //FIX FOR DOUBLE FIRING OF USEIONVIEWENTER, IF YOU KNOW OF A FIX...FEEL FREE
 let alreadyRan = false;
 
-const Home = () => {
+const Explore = () => {
   const [posts, setPosts] = useState([])
   const [fetchFailed, setFetchFailed] = useState(false)
 
@@ -45,46 +45,30 @@ const Home = () => {
         <Box background={'background'} direction='row' className='content-container' style={{ marginTop: '60px' }}>
           <div className='content-window'>
             <Box width={{ max: '600px', width: '100%' }} direction="column">
+              <Box pad={'small'} gap='medium' width={{ width: '100%' }} direction='column' round>
+                <Text margin={{top: 'small'}} weight={'bold'} size='large'>Happening Now</Text>
+                <Box round background={'brand-light'} height={{ min: '200px' }} width="100%">
 
-              <Box align="center" width={{ width: '100%' }} pad={{ top: 'medium', bottom: 'small' }}>
-                <Tabs style={{ width: '100%' }} justify="center">
-                  <Tab color='brand' style={{ width: '50%', textAlign: 'center' }} title="For You">
-                  </Tab>
-                  <Tab style={{ width: '50%', textAlign: 'center' }} title="Groups">
-                  </Tab>
-                </Tabs>
-              </Box>
-              <Box gap='medium' width={{ width: '100%' }} direction='column' round>
-                {posts.length > 0 ? <></> :
-                  <Box pad={'medium'} justify='center' align='center'>
-                    <Spinner
-                      border={[
-                        { side: 'all', color: 'background-contrast', size: 'medium' },
-                        { side: 'right', color: 'brand', size: 'medium' },
-                        { side: 'top', color: 'brand', size: 'medium' },
-                        { side: 'left', color: 'brand', size: 'medium' },
-                      ]} />
-                  </Box>}
-                {posts.map((post: any, index: number) => {
+
+                </Box>
+                <Text margin={{top: 'small'}} weight={'bold'} size='large'>Trending Topics</Text>
+                {posts.map((post: any, index:number) => {
                   return (
                     <PostCard border={'bottom'} key={index} post={post} />
                   )
                 })}
-                <IonInfiniteScroll
-                  onIonInfinite={(ev) => {
-                    getPosts(posts.length);
-                  }}
-                >
-                  {fetchFailed ?
-                    <Box pad={{ vertical: 'large' }} align='center' justify='center' width={'100%'}>
-                      <Text margin={{ bottom: 'small' }}>Failed to retrieve posts</Text>
-                      <Button onClick={() => { getPosts(posts.length) }} secondary color={'brand'}>Try Again</Button>
-                    </Box>
-                    :
-                    <IonInfiniteScrollContent />}
-
-                </IonInfiniteScroll>
-
+                <Text margin={{top: 'small'}} weight={'bold'} size='large'>Trending Posts</Text>
+                {posts.map((post: any, index:number) => {
+                  return (
+                    <PostCard border={'bottom'} key={index + 10} post={post} />
+                  )
+                })}
+                <Text margin={{top: 'small'}} weight={'bold'} size='large'>Trending Profiles</Text>
+                {posts.map((post: any, index:number) => {
+                  return (
+                    <PostCard border={'bottom'} key={index + 20} post={post} />
+                  )
+                })}
               </Box>
             </Box>
 
@@ -143,4 +127,4 @@ const Home = () => {
 
 
 
-export default Home;
+export default Explore;

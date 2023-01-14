@@ -36,7 +36,7 @@ const ExploreContainer = (props: any) => {
           <Button hoverIndicator className='top-button' onClick={() => { sidebarNavigate('/options') }} icon={<More />}></Button>
         </Box>
       </Box>
-      <CardBody gap='small' pad={{ horizontal: 'medium', vertical: 'small' }}>
+      <CardBody tabIndex={-1} onClick={() => { sidebarNavigate('/post/' + props.post.postAddress) }} gap='small' pad={{ horizontal: 'medium', vertical: 'small' }}>
         <Text className='top-button' size='small'>{props.post.mediaText}</Text>
         <Text className='top-button' color={'text-light'} size='xsmall'>{formatPostedTime(props.post.updatedAt)}</Text>
       </CardBody>
